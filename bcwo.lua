@@ -1,4 +1,3 @@
--- BCWO.lua  —  Balanced Craftwars Overhaul  |  HyperionUI edition
 if not game:IsLoaded() then game.Loaded:Wait() end
 task.wait(1)
 
