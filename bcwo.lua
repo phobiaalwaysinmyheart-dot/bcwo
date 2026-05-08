@@ -1,9 +1,15 @@
+-- BCWO.lua  —  Balanced Craftwars Overhaul  |  HyperionUI edition
 if not game:IsLoaded() then game.Loaded:Wait() end
 task.wait(1)
 
-local Hyperion = loadstring(game:HttpGet(
-    "https://raw.githubusercontent.com/phobiaalwaysinmyheart-dot/HBui/refs/heads/main/HyperionUI.lua"
-))()
+local _hyperionSrc
+local _ok, _err = pcall(function()
+    _hyperionSrc = game:HttpGet("https://raw.githubusercontent.com/phobiaalwaysinmyheart-dot/HBui/refs/heads/main/HyperionUI.lua")
+end)
+if not _ok or not _hyperionSrc or _hyperionSrc == "" then
+    _hyperionSrc = game:HttpGet("https://cdn.jsdelivr.net/gh/phobiaalwaysinmyheart-dot/HBui@main/HyperionUI.lua")
+end
+local Hyperion = loadstring(_hyperionSrc)()
 
 local Players          = game:GetService("Players")
 local RunService       = game:GetService("RunService")
@@ -22,7 +28,7 @@ local _menuKeybind = Enum.KeyCode.Insert
 
 local currentIndex = 1
 local autoFarming = false
-local selectedOres = {}
+local sedlectedOres = {}
 local fullbrightEnabled = false
 local originalBrightness, originalAmbient, originalOutdoorAmbient
 local currentOrePart = nil
